@@ -5,8 +5,5 @@ export default DS.Model.extend({
   start: DS.attr('string'),
   end: DS.attr('string'),
 
-  age: DS.belongsTo(),
-  religions: DS.hasMany(),
-  people: DS.hasMany(),
-  conflicts: DS.hasMany()
+  group: DS.belongsTo()
 });

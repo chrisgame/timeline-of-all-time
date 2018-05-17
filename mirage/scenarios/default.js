@@ -73,5 +73,18 @@ export default function(server) {
             server.create('age', { name: 'Boreal', dateUnits: 'ka', start: -9, end: -7.5, epoch: holocene });
             server.create('age', { name: 'Atlantic', dateUnits: 'ka', start: -7.5, end: -5, epoch: holocene });
             server.create('age', { name: 'Subboreal', dateUnits: 'ka', start: -5, end: -2.5, epoch: holocene });
-            server.create('age', { name: 'Subatlantic', dateUnits: 'ka', start: -2.5, end: 0, epoch: holocene });
+            let subatlantic = server.create('age', { name: 'Subatlantic', dateUnits: 'ka', start: -2.5, end: 0, epoch: holocene });
+
+              let romanRepublic = server.create('group', { name: 'Roman Republic', dateUnits: 'gregorian', start: '509 BC', end: '27 BC', age: subatlantic });
+              let romanEmpire = server.create('group', { name: 'Roman Empire', dateUnits: 'gregorian', start: '27 BC', end: '395 AD', age: subatlantic });
+              server.create('group', { name: 'Western Roman Empire', dateUnits: 'gregorian', start: '395 AD', end: '476 AD', age: subatlantic });
+              server.create('group', { name: 'Eastern Roman Empire', dateUnits: 'gregorian', start: '395 AD', end: '1453 AD', age: subatlantic });
+
+                server.create('person', { name: 'Gaius Julius Caesar', dateUnits: 'gregorian', start: '12/7/100 BC', end: '15/3/44 BC', group: romanRepublic });
+
+                server.create('religion', { name: 'Roman Polytheism', dateUnits: 'gregorian', start: '509 BC', end: '27 BC', group: romanRepublic });
+                server.create('religion', { name: 'Imperial Cult-Driven Polytheism', dateUnits: 'gregorian', start: '509 BC', end: '380 AD', group: romanRepublic });
+                server.create('religion', { name: 'Nicene Christianity', dateUnits: 'gregorian', start: '380 AD', end: '27 BC', group: romanRepublic });
+
+                server.create('conflict', { name: 'Battle of the Teutoburg Forest', dateUnits: 'current era notation system', start: '9 CE', end: '9 CE', group: romanEmpire });
 }
